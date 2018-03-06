@@ -1,5 +1,5 @@
 
-# node-couchdb-query-engine [![Build Status](https://travis-ci.org/wearetheledger/node-couchdb-query-engine.svg?branch=masterr)](https://travis-ci.org/wearetheledger/node-couchdb-query-engine)
+# node-couchdb-query-engine [![Build Status](https://travis-ci.org/wearetheledger/node-couchdb-query-engine.svg?branch=master)](https://travis-ci.org/wearetheledger/node-couchdb-query-engine)
 
 Criteria queries filters on JSON objects couchdb style.
 
