@@ -1,7 +1,21 @@
 import Engine from '../engine';
 
 const mongo = new Engine();
-export default mongo;
+
+// Comparision
+
+const rules = [
+    'eq', 'ne', 'gt', 'gte', 'lt', 'lte', 'in', 'nin', 'or', 'and', 'nor', 'not', 'exists', 'type', 'mod', 'regex', 'all', 'elem-match', 'size'
+];
+
+rules.forEach(rule => {
+    mongo.append2(require(`../rules/${rule}`).default);
+});
+
+
+export function test(data, query) {
+    return mongo.test(data, query);
+}
 
 export function parseQuery(data, query) {
     if (!query['selector']) {
@@ -33,37 +47,3 @@ export function parseQuery(data, query) {
     return result.slice(skip, limit);
 
 }
-
-// Comparision
-
-mongo.append2(require('../rules/eq'));
-mongo.append2(require('../rules/ne'));
-mongo.append2(require('../rules/gt'));
-mongo.append2(require('../rules/gte'));
-mongo.append2(require('../rules/lt'));
-mongo.append2(require('../rules/lte'));
-mongo.append2(require('../rules/in'));
-mongo.append2(require('../rules/nin'));
-
-// Logical
-
-mongo.append2(require('../rules/or'));
-mongo.append2(require('../rules/and'));
-mongo.append2(require('../rules/nor'));
-mongo.append2(require('../rules/not'));
-
-// Element
-
-mongo.append2(require('../rules/exists'));
-mongo.append2(require('../rules/type'));
-
-// Evaluation
-
-mongo.append2(require('../rules/mod'));
-mongo.append2(require('../rules/regex'));
-
-// Array
-
-mongo.append2(require('../rules/all'));
-mongo.append2(require('../rules/elem-match'));
-mongo.append2(require('../rules/size'));

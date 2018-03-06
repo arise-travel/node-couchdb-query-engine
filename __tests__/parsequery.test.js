@@ -1,7 +1,7 @@
-import { parseCouchDBQuery } from '../src';
+import { parseQuery } from '../src';
 import { expect } from 'chai';
 
-let eq1 = (a, q, r) => expect(parseCouchDBQuery(a, q).map(t => t.key)).to.deep.eq(r);
+let eq1 = (a, q, r) => expect(parseQuery(a, q).map(t => t.key)).to.deep.eq(r);
 
 describe('test parsequery', () => {
 

@@ -1,9 +1,6 @@
-import mongo_, { parseQuery } from './engine/mongo';
+import { parseQuery, test } from './engine/mongo';
 
-export default mongo_;
-
-export function parseCouchDBQuery(a, q) {
-    return parseQuery(a, q);
-}
-
-export const mongo = mongo_;
+export {
+    parseQuery,
+    test
+};
