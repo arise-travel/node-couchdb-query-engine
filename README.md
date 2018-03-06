@@ -1,37 +1,43 @@
 
-## Summary [![Build Status](https://travis-ci.org/wearetheledger/node-couchdb-query-engine.svg?branch=masterr)](https://travis-ci.org/wearetheledger/node-couchdb-query-engine)
+# node-couchdb-query-engine [![Build Status](https://travis-ci.org/wearetheledger/node-couchdb-query-engine.svg?branch=masterr)](https://travis-ci.org/wearetheledger/node-couchdb-query-engine)
 
 Criteria queries filters on JSON objects Mongo style.
 
 ## Installation
-
+```bash
     npm install json-criteria --save
+```
 
 ## Usage
 
 ### Node
-
+```javascript
     // npm install babel --save
     // Once at the entrypoint of your app.
     require('babel/register')
 
     var test = require('json-criteria').test
     console.log(test( {foo:1}, {foo:{$gt:0}} ))
+```
 
 ### CoffeeScript
 
-    # npm install babel --save
+```bash
+    npm install babel --save
+```
+```coffeescript
     # Once at the entrypoint of your app.
     require("babel/register")
 
     { test } = require 'json-criteria'
     console.log test {foo:1}, {foo:{$gt:0}}
-
+```
 ### Babel
 
+```javascript
     import { test } from 'json-criteria'
     console.log(test( {foo:1}, {foo:{$gt:0}} ))
-
+```
 ## Ops
 
 Criteria queries follow MongoDB convention. You can use operators described at http://docs.mongodb.org/manual/reference/operator/query
@@ -56,8 +62,7 @@ Criteria queries follow MongoDB convention. You can use operators described at h
   * `{ field: { $type: 'number|string|...' } }` - matches field type
 * evaluation ops
   * `{ field: { $mod: [ div, rem ] } }` - divided by div has reminder rem
-  * `{ field: { $regexp: '...', $options: 'i' } }` - matches regular expression with optional options
-  * `{ field: { $where: function (v) { return true/false } } }` - performs test using provided function, for security purposes function body as string is not supported
+  * `{ field: { $regex: '...', $options: 'i' } }` - matches regular expression with optional options
 * array ops
   * `{ field: { $all: [ ... ] } }` - all of the values are in the field's value
   * `{ field: { $elemMatch: ... } }` - at least one element matches
@@ -68,6 +73,7 @@ For more examples have a look at specs.
 # Example Use Case
 
 Let's say you've got JSON based RESTful API that you want to test using mocha:
+```javascript
 
     // spec/spec-my-api.js
 
@@ -109,6 +115,7 @@ Let's say you've got JSON based RESTful API that you want to test using mocha:
       }))
 
     })
+```
 
 ## License
 
