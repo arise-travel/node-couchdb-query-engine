@@ -1,6 +1,6 @@
 {
   "name": "@theledger/couchdb-query-engine",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Evaluate and filters criteria queries on JSON objects MongoDB style",
   "main": "./dist/index.js",
   "scripts": {
