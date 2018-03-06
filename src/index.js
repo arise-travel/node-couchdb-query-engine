@@ -4,3 +4,8 @@ export {
     parseQuery,
     test
 };
+
+export default {
+    parseQuery,
+    test
+}

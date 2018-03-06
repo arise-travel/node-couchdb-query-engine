@@ -1,31 +1,105 @@
-# npm-module-es6-boilerplate
-Boilerplate to write npm modules in ES6 and distribute vanilla ES5 code. This package will work seamlessly on any platform that supports ES5.
 
-[![Build Status](https://travis-ci.org/ygnr/npm-module-es6-boilerplate.svg?branch=master)](https://travis-ci.org/ygnr/npm-module-es6-boilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/ygnr/npm-module-es6-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/ygnr/npm-module-es6-boilerplate?branch=master)
+# node-couchdb-query-engine [![Build Status](https://travis-ci.org/wearetheledger/node-couchdb-query-engine.svg?branch=masterr)](https://travis-ci.org/wearetheledger/node-couchdb-query-engine)
 
-## Included
+Criteria queries filters on JSON objects couchdb style.
 
-- [babel](http://babeljs.io) - Transpile ES6
-- [Jest](https://facebook.github.io/jest/) - Tests made easy and includes coverage report
-- [Coveralls](https://coveralls.io/) - Ensure that all your new code is fully covered, and see coverage trends emerge.
-- [Travis](https://travis-ci.org) - Deploy with Confidence.
-- Auto publish to npm on every build.
-
-## Getting started
-
-```
-git clone git@github.com:ygnr/npm-module-es6-boilerplate.git
-
-cd npm-module-es6-boilerplate   # Change current directory to the newly created one
-yarn install                    # Install dependencies
+## Installation
+```bash
+    npm install @theledger/node-couchdb-query-engine --save
 ```
 
-## Testing
+## Usage
 
-This boilerplate uses [Facebook Jest](https://facebook.github.io/jest/). Add a
-directory named `__tests__` at any level and start writing tests.
+### Node
+```javascript
+    import queryEngine from "@theledger/node-couchdb-query-engine";
 
+    
+    console.log(queryEngine.test( {foo:1}, {foo:{$gt:0}} ))
+    console.log(queryEngine.parseQuery( {key:{foo:1}}, {selector:{foo:{$gt:0}}} ))
 ```
-yarn test
+
+## Ops
+
+Criteria queries follow CouchDB convention. You can use operators described at docs.couchdb.org/en/2.1.0/api/database/find.html?highlight=find#post--db-_find
+
+* logical ops
+  * `{ $and: [ ... ] }` - all of
+  * `{ $or: [ ... ] }` - any of
+  * `{ $nor: [ ... ] }` - none of
+  * `{ $not: ... }` - not, ie. `{ $not: { $gt: 0, $lt: 1 } }`
+* comparison ops
+  * `{ field: ... }` - is equal (implicit)
+  * `{ field: { $eq: ... } }` - is equal (explicit)
+  * `{ field: { $ne: ... } }` - is not equal
+  * `{ field: { $gt: ... } }` - is greater than
+  * `{ field: { $gte: ... } }` - is greater than or equal
+  * `{ field: { $lt: ... } }` - is lower than
+  * `{ field: { $lte: ... } }` - is lower than or equal
+  * `{ field: { $in: [ ... ] } }` - at least one element matches value (or value's elements if array)
+  * `{ field: { $nin: [ ... ] } }` - none of elements match value (or value's elements if array)
+* element ops
+  * `{ field: { $exists: true/false } }` - field exists
+  * `{ field: { $type: 'number|string|...' } }` - matches field type
+* evaluation ops
+  * `{ field: { $mod: [ div, rem ] } }` - divided by div has reminder rem
+  * `{ field: { $regex: '...', $options: 'i' } }` - matches regular expression with optional options
+* array ops
+  * `{ field: { $all: [ ... ] } }` - all of the values are in the field's value
+  * `{ field: { $elemMatch: ... } }` - at least one element matches
+  * `{ field: { $size: ... } }` - matches length of field's array value
+
+For more examples have a look at specs.
+
+# Example Use Case
+
+Let's say you've got JSON based RESTful API that you want to test using mocha:
+```javascript
+
+import queryEngine from "@theledger/node-couchdb-query-engine";
+
+const cars =  {
+  "vin-num-x":{
+      make:"Volvo",
+      year:2015,
+      color:"red"
+  }, 
+  "vin-num-y":{
+      make:"VW",
+      year:2018,
+      color:"red"
+  }, 
+  "vin-num-z":{
+      make:"Fiat",
+      year:2017,
+      color:"green"
+  }, 
+};
+
+// Will return 2 cars
+const filteredResult = queryEngine.parseQuery( cars, {selector:{year:{$gt:2016}}} )
 ```
+
+## License
+
+    The MIT License (MIT)
+
+    Copyright (c) 2014 Mirek Rusin http://github.com/mirek
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
