@@ -15,8 +15,13 @@ Criteria queries filters on JSON objects couchdb style.
     import queryEngine from "@theledger/node-couchdb-query-engine";
 
     
-    console.log(queryEngine.test( {foo:1}, {foo:{$gt:0}} ))
-    console.log(queryEngine.parseQuery( {key:{foo:1}}, {selector:{foo:{$gt:0}}} ))
+    // Test whether or not the query matches the content
+    // return a boolean
+    queryEngine.test( {foo:1}, {foo:{$gt:0}} )
+    
+    // Filter using a query
+    // returns array of key value
+    queryEngine.parseQuery( {key:{foo:1}}, {selector:{foo:{$gt:0}}} )
 ```
 
 ## Ops

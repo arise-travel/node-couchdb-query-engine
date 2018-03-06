@@ -13,10 +13,24 @@ rules.forEach(rule => {
 });
 
 
+/**
+ * Test whether or not data matches query
+ *
+ * @param {Object} data - Data object to match
+ * @param {Object} query - Query object
+ * @returns {*}
+ */
 export function test(data, query) {
     return mongo.test(data, query);
 }
 
+/**
+ * Filter out data using a qquery
+ *
+ * @param {Object} data - Key value object contains values to filter
+ * @param {Object} query - Query object
+ * @returns {Array.<*>}
+ */
 export function parseQuery(data, query) {
     if (!query['selector']) {
         throw new Error('Query needs a selector field');
