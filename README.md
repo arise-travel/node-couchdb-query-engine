@@ -1,7 +1,7 @@
 
-## Summary [![Build Status](https://travis-ci.org/mirek/node-json-criteria.png?branch=master)](https://travis-ci.org/mirek/node-json-criteria)
+## Summary [![Build Status](https://travis-ci.org/wearetheledger/node-couchdb-query-engine.svg?branch=masterr)](https://travis-ci.org/wearetheledger/node-couchdb-query-engine)
 
-Criteria queries on JSON objects Mongo style.
+Criteria queries filters on JSON objects Mongo style.
 
 ## Installation
 
