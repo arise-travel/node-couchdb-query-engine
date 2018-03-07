@@ -1,4 +1,4 @@
-import assert from 'assert';
+import { assert } from 'chai';
 import * as mongo from '../src';
 
 let y = (a, q) => assert.equal(true, mongo.test(a, q));

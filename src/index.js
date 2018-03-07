@@ -8,4 +8,4 @@ export {
 export default {
     parseQuery,
     test
-}
+};
