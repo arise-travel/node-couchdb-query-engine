@@ -3,6 +3,11 @@
 
 Criteria queries filters on JSON objects couchdb style.
 
+## Todo
+- [ ] Implement fields
+- [ ] Implement sort
+
+
 ## Installation
 ```bash
     npm install @theledger/couchdb-query-engine --save
