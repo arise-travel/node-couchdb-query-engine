@@ -10,14 +10,14 @@ Criteria queries filters on JSON objects couchdb style.
 
 ## Installation
 ```bash
-    npm install @theledger/couchdb-query-engine --save
+    npm install couchdb-query-engine --save
 ```
 
 ## Usage
 
 ### Node
 ```javascript
-    import queryEngine from "@theledger/couchdb-query-engine";
+    import queryEngine from "couchdb-query-engine";
 
     
     // Test whether or not the query matches the content
@@ -66,7 +66,7 @@ For more examples have a look at specs.
 Let's say you've got JSON based RESTful API that you want to test using mocha:
 ```javascript
 
-import queryEngine from "@theledger/couchdb-query-engine";
+import queryEngine from "couchdb-query-engine";
 
 const cars =  {
   "vin-num-x":{

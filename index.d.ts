@@ -1,4 +1,4 @@
-declare module '@theledger/couchdb-query-engine' {
+declare module 'couchdb-query-engine' {
 
     export function parseQuery(data: Map<string, any>, query: object): KV[];
 
