@@ -1,6 +1,7 @@
 {
-    "name": "couchdb-query-engine",
+    "name": "@types/couchdb-query-engine",
     "version": "2.4.2",
+    "private": true,
     "description": "Evaluate and filters criteria queries on JSON objects MongoDB style",
     "main": "./lib/index.js",
     "types": "./index.d.ts",
